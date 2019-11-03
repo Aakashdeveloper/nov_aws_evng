@@ -1,0 +1,150 @@
+Core  / Foundational Service
+70% app running on ec2
+Vm Vs/instances
+Regional Service
+We can launch in VPC
+Free tier 750 hr for t2.micro
+>Configure
+    =>CPU, Mem, Storage, N/W
+    => AMI(OS, software)
+    => Backup => EBS
+
+
+EBS-----
+>Similar to hardDisk
+>Presistant in nature
+Upto 30 GB Free
+Different Type => SSD & HDD 
+AMI=> backedup by EBS
+Instance State=> Stop , running terminate and reboot
+
+Instance Storage
+=>Similar to RAM
+Volatile in nature
+Instance State-> Running or terminate
+*******************
+
+Virtualization
+************
+EBS+HVM
+Para
+HVM are better as it support more hardware.
+
+Purchase Option
+****************** 
+On Demand  => Default
+Reserve=> Reserve instances from 1 yr to max 3yr 
+         Cost benifit of upto 75%
+         All upfront 70-75%
+         Partial Payment: 60-70%
+         No Upfront : 40-50%
+Spot =>Short term 
+        Cost benifit upto 90%
+        It can terminate anytime
+        .0035  .0050 .0055
+
+https://calculator.s3.amazonaws.com/index.html
+
+
+/**********************
+    Step to launch ec2
+*********************/
+=>ec2
+    =>Launch instances
+        =>Select AMI
+            =>Put Configuration
+            Network   Subnet AutoAssign
+            default   default enable
+                =>Storage
+                    =>Tags
+                        =>Security Group
+                            https
+                                =>launch
+
+/**********************************************
+    Step to launch linux as webserver
+*********************************************
+=> Launcg Ec2 linux
+    =>sudo su -
+        => yum install httpd -y
+            =>cd /var/www/html
+                =>vi index.html 
+                    =>Type html code
+                        =>use publicip/index.html in web browser.
+
+/************************
+    Use Windows  as web server
+*************************/
+=> Install IIS
+=> Install-WindowsFeature -name Web-Server -IncludeManagementTools
+=> C:/inetpub/wwwroot/index.html
+=> <h1>Hi welcome</h1>
+=> publicip/ index.html
+
+/************************
+   Golden Images(Custome Image)AMI
+*************************/
+
+
+
+=>Select Instance
+    =>Action
+        =>Image
+            =>create Image
+                =>Provide
+                    Name
+
+XVDA
+xen, vitual ,disk , a is first volumne
+
+
+Varticle Scale
+scale in & scale out
+
+Horizontal Scale
+Add In/ Remove
+
+/************************
+  Create Volume
+*************************/
+=>Volumes
+    =>Create Volume
+        =>Provide
+        Volume Type     Size    Az
+            gp2          1gb    us-east-1a
+
+
+=> Select Volume
+    =>Action
+        =>Attach Volume
+            =>Select Instance
+
+** Volume can attached to intsnace in same AZ
+/************************
+  Create SnapShot
+*************************/
+=> Select volume 
+    =>Action
+        =>create snapshot
+
+
+
+
+LB instance A & instance Backup
+
+Auto Scaling
+you can add LB in auto Scaling
+    now instance A & Instance B are part of AutoScaling
+
+>>>>You have add one configurtaion for Auto Scale Machine
+
+IF Load increse add more Machine
+    =>instance A and instance B will not be affected
+    => It will add new instance of autoscale
+
+If Load Decrese
+    => STill instance A and instance B will not be affected
+    => Start removing new machine
+
+
+

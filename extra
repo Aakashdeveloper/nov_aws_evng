@@ -22,3 +22,11 @@ AWS+GCP+AZURE
 pay as you go 
 
 
+{
+    "name":"a",
+    "rollno":1
+}
+
+
+chmod 400 abc.pem
+
