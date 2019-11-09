@@ -1,0 +1,30 @@
+aws configure
+aws ec2 describe-regions
+
+aws ec2 describe-regions --output table
+
+aws iam create-group --group-name devops
+aws iam create-user --user-name devv1
+
+ aws iam add-user-to-group --user-name devv1 --group-name devops
+
+ aws iam get-group --group-name devops
+
+ https://aws.amazon.com/blogs/security/writing-iam-policies-how-to-grant-access-to-an-amazon-s3-bucket/
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "iam:*",
+      "Resource": "*"
+    }
+  ]
+}
+cat > mypolicy.json
+
+aws iam put-user-policy --user-name devv1 --policy-name MyPolicy --policy-document mypolicy.json
+aws iam put-user-policy --user-name devs1 --policy-name MyPowerUserRole --policy-document file://mypolicy1.json
+
+https://docs.aws.amazon.com/cli/latest/index.html
