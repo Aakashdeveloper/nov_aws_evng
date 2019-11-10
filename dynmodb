@@ -1,0 +1,21 @@
+Sql, NoSql
+
+Sql
+Sno. |  Name | Hindi | English
+1    |  John |  80   |
+2    | Eva   |       | 80
+
+NoSql
+[
+    {
+        sno:1,
+        name:'john',
+        hindi:80
+    },
+    {
+        sno:2,
+        name:'eva',
+        english:80
+    }
+]
+

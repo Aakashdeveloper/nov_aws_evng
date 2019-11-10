@@ -1,3 +1,5 @@
+pip install awscli
+
 aws configure
 aws ec2 describe-regions
 
@@ -33,19 +35,21 @@ aws iam list-user-policies  --user-name devv1
 
 aws ec2 create-key-pair --key-name Mynewkeys --query 'KeyMaterial' --output text > Mynewkeys.pem
 
-aws ec2 create-security-group --group-name MyGroup
+aws ec2 create-security-group --group-name MyGroup1 --description "my sgg"
 
-"GroupId": "sg-0d9a1ff91ec680d26"
+"GroupId": "sg-0ece96afc3829d6e2"
 
-aws ec2 authorize-security-group-ingress --group-name MyGroup --protocol tcp --port 3389 --cidr 0.0.0.0/0
+aws ec2 authorize-security-group-ingress --group-name MyGroup1 --protocol tcp --port 3389 --cidr 0.0.0.0/0
 
-aws ec2 run-instances --image-id ami-0d4df21ffeb914d61 --count 1 --instance-type t2.micro --key-name Mynewkeys --security-groups MyGroup
+aws ec2 run-instances --image-id ami-00eb20669e0990cb4 --count 1 --instance-type t2.micro --key-name Mynewkeys --security-groups MyGroup1
 
 aws ec2 describe-instances
 
 aws ec2 describe-instances --query  'Reservations[*].Instances[*].[InstanceId,State,Name,LaunchTime,PublicIpAddress]'
 
+
+// S3
 aws s3 mb s3://aakashdeveloperfunnel
 aws s3 cp "/Users/avi/Desktop/test.png" s3://aakashdeveloperfunnel
 
-aws s3 cp s3://aakashdeveloperfunnel/test.png /Users/avi/Desktop
+aws s3 cp s3://aakashdeveloperfunnelnov/test.png /Users/avi/Desktop
